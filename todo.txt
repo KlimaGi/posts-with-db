@@ -1,0 +1,9 @@
+Create login to upload posts to database,
+
+
+
+In react create page to find particular posts (by username)
+
+
+
+if username is not provided clicking "filter" should show all pots in database
