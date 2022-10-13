@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from '../components/search-bar';
-import Posts from '../components/posts';
+import SinglePost from '../components/single-post';
 
 const PostsPage = () => {
 
@@ -8,7 +8,12 @@ const PostsPage = () => {
   return (
     <div className='container fd-column'>
       <SearchBar />
-      <Posts />
+      <div>
+        <SinglePost />
+        <SinglePost />
+        <SinglePost />
+      </div>
+
     </div>
   )
 }
