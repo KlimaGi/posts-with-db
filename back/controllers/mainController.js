@@ -7,16 +7,20 @@ module.exports = {
     await newPost.save();
     res.send({ post: newPost });
   },
-  findCar: async (req, res) => {
-    const { value, category } = req.params;
+  filterPosts: async (req, res) => {
+    const { username } = req.body;
 
-    let obj = {};
-    obj[category] = value;
+    let posts = [];
 
-    const cars = await carSchema.find(obj);
-    console.log('value, category', value, category);
+    if (username.length > 0) {
+      posts = await postSchema.find({ username });
+    } else {
+      posts = await postSchema.find();
+    }
 
-    res.send({ cars });
+    console.log('result-username', username);
+
+    res.send({ posts });
   }
 
 
