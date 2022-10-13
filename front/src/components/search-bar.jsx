@@ -1,14 +1,13 @@
 import React, { useRef } from 'react'
 import { post } from '../plugins/http';
 
-const SearchBar = () => {
+const SearchBar = ({ setPosts }) => {
   const inpRef = useRef();
 
   const filter = async () => {
     const username = inpRef.current.value;
-    const res = await post(`filter`, { username });
-    console.log('res-filter', res);
-
+    const res = await post('filter', { username });
+    setPosts(res.posts);
     inpRef.current.value = '';
   }
 

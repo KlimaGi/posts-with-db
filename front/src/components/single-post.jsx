@@ -1,14 +1,14 @@
 import React from 'react'
 
-const SinglePost = () => {
+const SinglePost = ({ post }) => {
   return (
     <div className='post'>
-      <img src="https://images.everydayhealth.com/images/pet-health/cs-pet-health-cat-exercises-1440x810.jpg" alt="" />
+      <img src={post.image} alt="" />
       <div>
 
-        <h4>Title</h4>
-        <p>Username</p>
-        <p>Description</p>
+        <h4>{post.title}</h4>
+        <p>{post.username}</p>
+        <p>{post.description}</p>
       </div>
     </div>
   )
