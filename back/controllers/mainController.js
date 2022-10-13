@@ -1,10 +1,11 @@
-const carSchema = require('../schemas/carSchema');
+const postSchema = require('../schemas/postSchema');
 
 module.exports = {
-  carInfo: async (req, res) => {
-    const newCar = new carSchema(req.body)
-    await newCar.save();
-    res.send({ car: newCar });
+  postInfo: async (req, res) => {
+    const newPost = new postSchema(req.body);
+    console.log('newPost', newPost);
+    await newPost.save();
+    res.send({ post: newPost });
   },
   findCar: async (req, res) => {
     const { value, category } = req.params;

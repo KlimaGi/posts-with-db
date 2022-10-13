@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const { carInfo, findCar } = require('../controllers/mainController');
+const { postInfo, findCar } = require('../controllers/mainController');
 
-router.post("/addCar", carInfo);
+router.post("/addPost", postInfo);
 
 router.get("/find/:value/:category", findCar);
 

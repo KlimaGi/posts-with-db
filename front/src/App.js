@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import './styles.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { get, post } from "./plugins/http";
 import PostsPage from './pages/posts-page.jsx';
-import CreatePostPage from './pages/create-post-page';
+import IndexPage from './pages/index-page';
 
 
 function App() {
@@ -15,8 +14,8 @@ function App() {
 
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<PostsPage />} />
-            <Route path='/createPost' element={<CreatePostPage />} />
+            <Route path='/' element={<IndexPage />} />
+            <Route path='/posts' element={<PostsPage />} />
 
           </Routes>
 

@@ -3,7 +3,7 @@ import SinglePost from './single-post';
 
 const Posts = () => {
   return (
-    <div className='conatiner'>
+    <div className=''>
       All posts
       <SinglePost />
       <SinglePost />

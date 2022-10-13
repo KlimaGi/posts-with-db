@@ -62,3 +62,11 @@
   background-color: #d0d0e7;
   border-style: none;
 }
+
+.post {
+  width: 20rem;
+  background-color: #d0d0e7;
+}
+.post img {
+  width: 100%;
+}
