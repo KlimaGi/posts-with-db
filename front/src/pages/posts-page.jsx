@@ -12,13 +12,20 @@ const PostsPage = () => {
       setPosts(res.posts);
     };
     allPosts();
-  }, [])
+  }, []);
+
+  // filtruoti istrintus postus patogiau fronte, kai rodomi vieno userio postai, po istrinimo svarbu vis dar rodyti pasirinkto userio postus
+  const postRemoved = (id) => {
+    let updatedPosts = [...posts];
+    updatedPosts = updatedPosts.filter(post => post._id !== id);
+    setPosts(updatedPosts);
+  };
 
   return (
     <div className='container fd-column'>
       <SearchBar setPosts={setPosts} />
       <div>
-        {posts.map(post => <SinglePost key={post._id} post={post} />)}
+        {posts.map(post => <SinglePost key={post._id} post={post} postRemoved={postRemoved} />)}
 
       </div>
 

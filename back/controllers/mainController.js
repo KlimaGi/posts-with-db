@@ -16,8 +16,15 @@ module.exports = {
     } else {
       posts = await postSchema.find();
     }
-
+    console.log('posts', posts);
     res.send({ posts });
+  },
+  deletePost: async (req, res) => {
+    const { id } = req.params;
+
+    await postSchema.findOneAndDelete({ _id: id })
+
+    res.send({ success: true });
   }
 
 

@@ -1,6 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { get } from '../plugins/http';
 
-const SinglePost = ({ post }) => {
+const SinglePost = ({ post, postRemoved }) => {
+
+  async function remove() {
+    const res = await get(`delete/${post._id}`);
+    console.log('res', res);
+    postRemoved(post._id);
+  }
+
   return (
     <div className='post'>
       <img src={post.image} alt="" />
@@ -10,6 +18,7 @@ const SinglePost = ({ post }) => {
         <p>{post.username}</p>
         <p>{post.description}</p>
       </div>
+      <button onClick={remove}>delete</button>
     </div>
   )
 }

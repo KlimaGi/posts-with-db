@@ -8,7 +8,7 @@ const SearchBar = ({ setPosts }) => {
     const username = inpRef.current.value;
     const res = await post('filter', { username });
     setPosts(res.posts);
-    inpRef.current.value = '';
+    // inpRef.current.value = '';
   }
 
   return (
