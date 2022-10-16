@@ -25,6 +25,18 @@ module.exports = {
     await postSchema.findOneAndDelete({ _id: id })
 
     res.send({ success: true });
+  },
+  updatePost: async (req, res) => {
+    const { title, id } = req.body;
+    console.log('req.body', req.body);
+
+    const post = await postSchema.findOneAndUpdate(
+      { _id: id },
+      { $set: { title: title } },
+      { new: true }
+    );
+    console.log('post', post);
+    res.send({ post });
   }
 
 

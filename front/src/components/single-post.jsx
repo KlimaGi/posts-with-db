@@ -1,23 +1,36 @@
-import React from 'react';
-import { get } from '../plugins/http';
+import React, { useState, useRef } from 'react';
+import { get, post } from '../plugins/http';
 
-const SinglePost = ({ post, postRemoved }) => {
+const SinglePost = ({ post: item, postRemoved }) => {
+  const inpRef = useRef();
+  const [showForm, setShowForm] = useState(false);
 
   async function remove() {
-    const res = await get(`delete/${post._id}`);
+    const res = await get(`delete/${item._id}`);
     console.log('res', res);
-    postRemoved(post._id);
+    postRemoved(item._id);
   }
+
+  async function update() {
+    const val = inpRef.current.value;
+
+    const res = await post("update", { title: val, id: item._id });
+    console.log('res-update', res);
+  }
+
 
   return (
     <div className='post'>
-      <img src={post.image} alt="" />
+      <img src={item.image} alt="" />
       <div>
 
-        <h4>{post.title}</h4>
-        <p>{post.username}</p>
-        <p>{post.description}</p>
+        <h4>{item.title}</h4>
+        <p>{item.username}</p>
+        <p>{item.description}</p>
       </div>
+
+      <input ref={inpRef} type='text' />
+      <button onClick={update}>update</button>
       <button onClick={remove}>delete</button>
     </div>
   )
