@@ -37,6 +37,9 @@ module.exports = {
     );
     console.log('post', post);
     res.send({ post });
+  },
+  info: async (req, res) => {
+    res.send({ ok: "ok" })
   }
 
 

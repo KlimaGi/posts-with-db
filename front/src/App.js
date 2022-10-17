@@ -3,7 +3,7 @@ import './styles.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PostsPage from './pages/posts-page.jsx';
 import IndexPage from './pages/index-page';
-
+import LoginPage from './pages/login-page';
 
 function App() {
 
@@ -16,6 +16,7 @@ function App() {
           <Routes>
             <Route path='/' element={<IndexPage />} />
             <Route path='/posts' element={<PostsPage />} />
+            <Route path='/login' element={<LoginPage />} />
 
           </Routes>
 
