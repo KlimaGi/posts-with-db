@@ -1,4 +1,5 @@
 const postSchema = require('../schemas/postSchema');
+const detailedPostSchema = require('../schemas/detailedPostSchema');
 
 module.exports = {
   postInfo: async (req, res) => {
@@ -38,9 +39,15 @@ module.exports = {
     console.log('post', post);
     res.send({ post });
   },
-  info: async (req, res) => {
+  validate: async (req, res) => {
     res.send({ ok: "ok" })
-  }
+  },
+  validatePost: async (req, res) => {
+    // const newPost = new detailedPostSchema(req.body);
+    // await newPost.save();
+    // res.send({ post: newPost });
+    res.send({ ok: "ok" });
+  },
 
 
 }

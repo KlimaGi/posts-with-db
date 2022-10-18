@@ -12,7 +12,7 @@ const LoginPage = () => {
       password: passwordRef.current.value,
       password2: password2Ref.current.value,
     };
-    const data = await post('info', loginData);
+    const data = await post('validate', loginData);
     console.log('loginData res', data);
   }
 
