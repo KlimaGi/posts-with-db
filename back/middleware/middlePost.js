@@ -12,9 +12,9 @@ module.exports = (req, res, next) => {
   if (!photo.includes('http')) message = 'bad photo url';
   if (!username[0].match(/[A-Z]/g)) message = 'username first letter should be upperCase';
   if (username.length < 4) message = 'username should be longer than 4 letters';
-  if (username.length < 20) message = 'username should be shorter than 20 letters';
+  if (username.length > 20) message = 'username should be shorter than 20 letters';
 
 
-  if (message !== '') res.send({ message });
+  if (message !== '') res.send({ error: true, message: message });
   else next();
-}
+} 
