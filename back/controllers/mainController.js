@@ -43,10 +43,9 @@ module.exports = {
     res.send({ ok: "ok" })
   },
   validatePost: async (req, res) => {
-    // const newPost = new detailedPostSchema(req.body);
-    // await newPost.save();
-    // res.send({ post: newPost });
-    res.send({ ok: "ok" });
+    const newPost = new detailedPostSchema(req.body);
+    await newPost.save();
+    res.send({ error: false, message: 'all good', post: newPost });
   },
 
 

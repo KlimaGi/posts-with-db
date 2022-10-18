@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { post } from '../plugins/http';
 
 const CreateDetailedPostForm = () => {
@@ -8,9 +8,13 @@ const CreateDetailedPostForm = () => {
     photoRef: useRef(),
     usernameRef: useRef(),
     cityRef: useRef(),
-  }
+  };
 
-  async function confirmData() {
+  const [error, setError] = useState('');
+
+
+  const confirmData = async (e) => {
+    e.preventDefault();
     const postData = {
       title: postRefs.titleRef.current.value,
       description: postRefs.descriptionRef.current.value,
@@ -18,17 +22,24 @@ const CreateDetailedPostForm = () => {
       username: postRefs.usernameRef.current.value,
       city: postRefs.cityRef.current.value,
     };
-    const data = await post('createPost', postData);
-    console.log('data-res', data);
+    setError('');
+    const res = await post('createPost', postData);
+    console.log('data-res', res);
+    if (res.error) return setError(res.message);
   }
 
   return (
 
-    <form className='d-flex fd-column'>
+    <form onSubmit={confirmData} className='d-flex fd-column'>
+      <label>title</label>
       <input ref={postRefs.titleRef} className='input' type="text" placeholder='title' />
+      <label>description</label>
       <input ref={postRefs.descriptionRef} className='input' type="text" placeholder='description' />
+      <label>photo</label>
       <input ref={postRefs.photoRef} className='input' type="text" placeholder='photo' />
+      <label>username</label>
       <input ref={postRefs.usernameRef} className='input' type="text" placeholder='username' />
+      <label>city</label>
       <select ref={postRefs.cityRef} className='input' type="text" placeholder='city'>
         <option value='vilnius'>Vilnius</option>
         <option value='kaunas'>Kaunas</option>
@@ -38,7 +49,8 @@ const CreateDetailedPostForm = () => {
         <option value='panevezys'>Panevezys</option>
       </select>
 
-      <button onClick={confirmData} className='button'>add post</button>
+      <button type='submit' className='button'>add post</button>
+      <span className='error-msg'>{error}</span>
     </form>
 
 

@@ -43,6 +43,9 @@
   background-color: #d0d0e7;
   border-style: none;
 }
+.error-msg{
+  color: indianred;
+}
 
 .post {
   width: 20rem;
