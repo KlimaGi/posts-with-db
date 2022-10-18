@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { post } from '../plugins/http';
 
-const CreateDetailedPostForm = () => {
+const CreateDetailedPostForm = ({ posts, setPosts }) => {
   const postRefs = {
     titleRef: useRef(),
     descriptionRef: useRef(),
@@ -26,6 +26,7 @@ const CreateDetailedPostForm = () => {
     const res = await post('createPost', postData);
     console.log('data-res', res);
     if (res.error) return setError(res.message);
+    setPosts([...posts, res.post]);
   }
 
   return (

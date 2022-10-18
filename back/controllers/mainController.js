@@ -47,6 +47,10 @@ module.exports = {
     await newPost.save();
     res.send({ error: false, message: 'all good', post: newPost });
   },
+  detailedPosts: async (req, res) => {
+    const posts = await detailedPostSchema.find();
+    res.send({ posts });
+  }
 
 
 }

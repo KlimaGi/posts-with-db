@@ -3,7 +3,7 @@ const router = express.Router();
 const middle = require("../middleware/middle");
 const middlePost = require("../middleware/middlePost");
 
-const { postInfo, filterPosts, deletePost, updatePost, validate, validatePost } = require('../controllers/mainController');
+const { postInfo, filterPosts, deletePost, updatePost, validate, validatePost, detailedPosts } = require('../controllers/mainController');
 
 router.post("/addPost", postInfo);
 router.post("/filter", filterPosts);
@@ -12,5 +12,6 @@ router.post("/update", updatePost);
 router.post("/createPost", middlePost, validatePost)
 
 router.post('/validate', middle, validate);
+router.get('/detailedPosts', detailedPosts);
 
 module.exports = router; 
